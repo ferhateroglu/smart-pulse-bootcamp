@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Table V02</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<!--===============================================================================================-->
+</head>
+
+<body>
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="date-picker">
+					<div class="date-picker-box">
+						<p class="date-picker-box-text">Başlangıç</p>
+						<input id="startDate" class="date-picker-box-input" type="date">
+					</div>
+					<div class="date-picker-box">
+						<p class="date-picker-box-text">Bitiş</p>
+						<input id="endDate" class="date-picker-box-input" type="date">
+					</div>
+					<div class="date-picker-box">
+						<p style="  font-family: Poppins-Regular;font-size: 18px;color: #6c7ae0 !important;line-height: 1.2;font-weight: unset !important; padding: 6px;
+						">submit</p>
+						<button onclick="dateFilter()" class="date-picker-box-button">Verileri Getir</button>
+					</div>
+				</div>
+				<div class="table <%= (resultArray.length == 0) && 'display-hide'%>">
+
+					<div class="row header">
+						<div class="cell">
+							Tarih
+						</div>
+						<div class="cell">
+							Toplam İşlem Miktarı(MWh)
+						</div>
+						<div class="cell">
+							Toplam İşlem Tutarı(TL)
+						</div>
+						<div class="cell">
+							Ağırlık Ortalama Fiyat(TL/MWh)
+						</div>
+					</div>
+					<% for(let i = 0; i< resultArray.length; i++){%>
+						<div class="row">
+							<div class="cell" data-title="Tarih">
+								<% let tarih =resultArray[i].contract %>
+								<%=(tarih.slice(6,8)+'/'+tarih.slice(4,6)+'/'+tarih.slice(2,4)+' '+tarih.slice(8,10)+':00')%> 
+							</div>
+							<div class="cell" data-title="Toplam İşlem Miktarı(MWh)">
+								<%= resultArray[i].topIsMik %>
+							</div>
+							<div class="cell" data-title="Toplam İşlem Tutarı(TL)">
+								<%= resultArray[i].topIsTut %>
+							</div>
+							<div class="cell" data-title="Ağırlık Ortalama Fiyat(TL/MWh)">
+								<%= resultArray[i].agOrtFiy %>
+							</div>
+						</div>
+					<%}%>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+
+</html>
