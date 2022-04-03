@@ -38,7 +38,13 @@ app.get('/', (req, res) => {
 });
 app.get('*',(req, res) =>{
   res.send('<h1 style="text-align: center;">page not found 404</h1>');
-})
+});
+
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+  console.log(`sunucu ${port} portunda başlatıldı`);
+});
+
 
 const getData = async (date) => {
 
@@ -85,6 +91,3 @@ const groupAndCalculate = (data) => {
   return results;
 }
 
-app.listen('5000', () => {
-  console.log('server running on 5000 port');
-})
